@@ -30,11 +30,12 @@ kubectl apply -f https://github.com/knative/serving/releases/download/knative-v1
 
 ### Istio
 
+```
 kubectl apply -l knative.dev/crd-install=true -f https://github.com/knative/net-istio/releases/download/knative-v1.9.2/istio.yaml
 kubectl apply -f https://github.com/knative/net-istio/releases/download/knative-v1.9.2/istio.yaml
 
 kubectl apply -f https://github.com/knative/net-istio/releases/download/knative-v1.9.2/net-istio.yaml
-
+```
 
 ### Fetch the External IP address or CNAME (Would be needed to configure DNS) by running the command:
 
@@ -48,7 +49,7 @@ kubectl --namespace istio-system get service istio-ingressgateway
 
 Choose your Domain name, in my case I am using knative.te.nestdigital.com
 
-So my DNS entry is like: *.knative.te.nestdigital.com => <IP address found from the previous step>
+So my DNS entry is like: *.knative.te.nestdigital.com => IP address found from the previous step
 
 
 ### Direct knative to use that domain
@@ -63,7 +64,6 @@ kubectl patch configmap/config-domain --namespace knative-serving --type merge -
 ### Install all cert-manager components
 
 ```
-<!-- kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.11.0/cert-manager.yaml -->
 
 kubectl apply -f https://github.com/knative/net-certmanager/releases/download/knative-v1.9.2/release.yaml
 ```
